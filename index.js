@@ -24,11 +24,28 @@ app.post('/api', (request, response) => {
     data.timestamp = timestamp;
     co_data.insert(data);
     response.json({
+        "fulfillmentText": "This is for Dialog Flow from My App on Heroku",
+        "fulfillmentMessages": [
+            {
+                "text": {
+                    "text": [
+                        `Lattitude is 37.774929 and longitude is -122.419416`
+                    ]
+                }
+            }
+        ],
+        "source": "",
         status: 'Success',
         latitude: data.lat || 37.774929,
         longitude: data.lon || -122.419416,
         timestamp: data.timestamp
     });
+    // response.json({
+    //     status: 'Success',
+    //     latitude: data.lat || 37.774929,
+    //     longitude: data.lon || -122.419416,
+    //     timestamp: data.timestamp
+    // });
 })
 
 app.get('/weather/:latlon', async (request, response) => {
