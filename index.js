@@ -25,8 +25,8 @@ app.post('/api', (request, response) => {
     co_data.insert(data);
     response.json({
         status: 'Success',
-        latitude: data.lat,
-        longitude: data.lon,
+        latitude: data.lat || 37.774929,
+        longitude: data.lon || -122.419416,
         timestamp: data.timestamp
     });
 })
